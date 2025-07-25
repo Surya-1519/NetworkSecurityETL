@@ -4,7 +4,7 @@ from src.constants import train_pipeline
 
 class TrainingPipelineConfig:
     def __init__(self,timestamp = datetime.now()):
-        timestamp = timestamp.strftime("%d_%M_%Y_%H_%M_%S")
+        timestamp = timestamp.strftime("%d_%m_%Y_%H_%M_%S")
         self.pipeline_name = train_pipeline.PIPELINE_NAME
         self.artifact_name = train_pipeline.ARTIFACT_DIR
         self.artifact_dir = os.path.join(self.artifact_name,timestamp)
@@ -47,9 +47,9 @@ class DataTransformationConfig:
      def __init__(self,training_pipeline_config:TrainingPipelineConfig):
         self.data_transformation_dir: str = os.path.join( training_pipeline_config.artifact_dir,train_pipeline.DATA_TRANSFORMATION_DIR_NAME )
         self.transformed_train_file_path: str = os.path.join( self.data_transformation_dir,train_pipeline.DATA_TRANSFORMATION_TRANSFORMED_DATA_DIR,
-            train_pipeline.TRAIN_FILE_NAME.replace("csv", "npy"),)
+            train_pipeline.TRAIN_DATA.replace("csv", "npy"),)
         self.transformed_test_file_path: str = os.path.join(self.data_transformation_dir,  train_pipeline.DATA_TRANSFORMATION_TRANSFORMED_DATA_DIR,
-            train_pipeline.TEST_FILE_NAME.replace("csv", "npy"), )
+            train_pipeline.TEST_DATA.replace("csv", "npy"), )
         self.transformed_object_file_path: str = os.path.join( self.data_transformation_dir, train_pipeline.DATA_TRANSFORMATION_TRANSFORMED_OBJECT_DIR,
             train_pipeline.PREPROCESSING_OBJECT_FILE_NAME,)
 
