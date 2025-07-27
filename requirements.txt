@@ -9,4 +9,6 @@ certifi
 pymongo[srv]
 dill
 pyaml
+xgboost
+mlflow
 #-e .
