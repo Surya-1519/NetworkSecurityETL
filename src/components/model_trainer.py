@@ -108,6 +108,8 @@ class ModelTrainer():
             os.makedirs(file_folder,exist_ok=True)
             
             save_pickle_file(self.model_trainer_config.trained_model_file_path,network_model)
+
+            save_pickle_file("final_model/model.pkl",best_model)
             
             save_json(self.model_trainer_config.model_report_file_path,ans[1])
 

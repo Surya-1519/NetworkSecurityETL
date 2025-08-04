@@ -11,4 +11,7 @@ dill
 pyaml
 xgboost
 mlflow
+fastapi
+uvicorn
+python-multipart
 #-e .

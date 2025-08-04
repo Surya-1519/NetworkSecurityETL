@@ -14,7 +14,7 @@ from src.constants.train_pipeline import DATA_TRANSFORMATION_IMPUTER_PARAMS
 from src.utils.main_utils.utils import save_numpy_array,save_pickle_file
 
 class DataTransformation:
-    def __init__(self,data_validation_artifact:DataTransformationArtifact,data_transformation_config:DataTransformationConfig):
+    def __init__(self,data_validation_artifact:DataValidationArtifact,data_transformation_config:DataTransformationConfig):
         try:
             self.data_validation_artifact:DataValidationArtifact = data_validation_artifact
             self.data_transformation_config:DataTransformationConfig = data_transformation_config
@@ -62,6 +62,8 @@ class DataTransformation:
             save_numpy_array(self.data_transformation_config.transformed_train_file_path,data=train_array)
             save_numpy_array(self.data_transformation_config.transformed_test_file_path,data=test_array)
             save_pickle_file(self.data_transformation_config.transformed_object_file_path,pkl_file=processor)
+
+            save_pickle_file("final_model/preprocessor.pkl",processor)
 
             data_transformation_artifact = DataTransformationArtifact(
                 transformed_object_file_path=self.data_transformation_config.transformed_object_file_path,
